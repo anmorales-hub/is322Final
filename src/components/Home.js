@@ -5,15 +5,15 @@ import { deleteAccount} from "../actions";
 class Home extends React.Component {
     state = {
         currentPage: '/'
-    } //might not deal with this
+    };
 
-    isActivePage(pageName) {
-        return (pageName === this.props.currentView ? 'nav-link active' : 'nav-link')
+    isActive(pageName) {
+        return (pageName === this.props.currView ? 'nav-link active' : 'nav-link')
     }
 
-    onNavClick(event, pageName) {
+    onPageClick(event, pageName) {
         event.preventDefault();
-        this.props.onViewChange(pageName);
+        this.props.whenVChange(pageName);
     }
 
     accountsSeg () {
@@ -27,8 +27,8 @@ class Home extends React.Component {
                         <h4 className="cardName">Holder: { acct.name }</h4>
                         <h5 className="cardBalance">Balance: ${ acct.balance } </h5>
                         <div className="btnHolster">
-                            <button type="button" className={this.isActivePage('Account')} onClick={(e) => this.onNavClick(e, 'Account')}>  View Account </button>
-                            <button type="button" onClick={() => {this.props.deleteAcct(acct._id)}} className="accDelete"> Delete Account </button>
+                            <button type="button" className={this.isActive('Account')} onClick={(e) => this.onPageClick(e, 'Account')}>  View Account </button>
+                            <button type="button" onClick={() => {this.props.deleteAccount(acct._id)}} className="accDelete"> Delete Account </button>
                         </div>
                     </div>
                 </div>
@@ -40,9 +40,8 @@ class Home extends React.Component {
         const accList = this.accountsSeg();
         return (
             <div className="container">
-                <h1> MONEYBANKS </h1>
                 <h2> Accounts </h2>
-                <div className="accList">
+                <div className="accountList">
                     { accList }
                 </div>
             </div>

@@ -5,7 +5,6 @@ export const setAccounts = accounts => {
     }
 };
 
-/* Sets transactions for initial display. */
 export const setTransactions = transactions => {
     return {
         type: 'SET_TRANSACTIONS',
@@ -13,7 +12,6 @@ export const setTransactions = transactions => {
     }
 };
 
-/* Deletes account. */
 export const deleteAccount = accountId => {
     return {
         type: 'DELETE_ACCOUNT',
@@ -21,7 +19,6 @@ export const deleteAccount = accountId => {
     }
 };
 
-/* Edits account name. */
 export const editAccount = (name, accountId) => {
     return {
         type: 'EDIT_ACCOUNT',
@@ -32,7 +29,6 @@ export const editAccount = (name, accountId) => {
     }
 };
 
-/* Deposits Money Into Account. */
 export const deposit = (amount, accountId) => {
     return {
         type: 'DEPOSIT',
@@ -43,7 +39,6 @@ export const deposit = (amount, accountId) => {
     }
 };
 
-/* Withdraws Money From Account */
 export const withdraw = (amount, accountId) => {
     return {
         type: 'WITHDRAW',
@@ -64,4 +59,4 @@ export const newTrans = (type, accountId, amount, name) => {
             name
         }
     };
-}
+};

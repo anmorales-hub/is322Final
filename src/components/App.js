@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 
 import Pages from './Pages';
-import { setAccounts, setTransactions } from "../actions";
 import Home from './Home';
 import Transactions from './Transactions';
 import Account from "./Account";
@@ -36,7 +35,7 @@ class App extends React.Component {
 
     }
 
-    onViewChange(view) {
+    whenVChange(view) {
         this.setState({ view });
     }
 
@@ -44,7 +43,7 @@ class App extends React.Component {
         const { view } = this.state;
         return (
             <div className="container">
-            <Pages currentView={view} onViewChange={this.onViewChange.bind(this)}/>
+            <Pages currentView={view} onViewChange={this.whenVChange.bind(this)}/>
         {jsx}
     </div>
     );
@@ -56,7 +55,7 @@ class App extends React.Component {
         switch (view) {
 
             case 'Home':
-                return (this.wrapPage(<Home currentView={view} onViewChange={this.onViewChange.bind(this)} />));
+                return (this.wrapPage(<Home currentView={view} onViewChange={this.whenVChange.bind(this)} />));
             case 'Transactions':
                 return (this.wrapPage(<Transactions />));
             case 'Account':
@@ -67,10 +66,6 @@ class App extends React.Component {
     }
 
 }
-const mapStateToProps = (state) => {
-    return {
-        errorMessage: state.errors
-    };
-};
 
-export default connect(mapStateToProps, { setAccounts, setTransactions })(App);
+
+export default App;

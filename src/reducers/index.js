@@ -1,13 +1,13 @@
 const DEFAULT_STATE = {
     accounts: [],
     transactions: []
-}
+};
 
 const getData = (state, action, data) => {
     let newState = {
         accounts: [ ...state.accounts ],
         transactions: [ ...state.transactions ]
-    }
+    };
 
     data.forEach(value => {
         if (action === 'FETCH_ACCOUNTS') {
@@ -19,7 +19,7 @@ const getData = (state, action, data) => {
     });
 
     return newState;
-}
+};
 
 const dataReducer = (state = DEFAULT_STATE, action) => {
     switch (action.type) {
@@ -39,7 +39,7 @@ const dataReducer = (state = DEFAULT_STATE, action) => {
             let editState = {
                 accounts: [ ...state.accounts ],
                 transactions: [ ...state.transactions ]
-            }
+            };
 
             const editIndex = editState.accounts.findIndex(char => {
                 return char._id === action.payload.accountId;
@@ -49,7 +49,7 @@ const dataReducer = (state = DEFAULT_STATE, action) => {
                 _id: action.payload.accountId,
                 name: action.payload.name,
                 balance: action.payload.balance
-            }
+            };
 
             return editState;
 
@@ -57,7 +57,7 @@ const dataReducer = (state = DEFAULT_STATE, action) => {
             let deleteState = {
                 accounts: [ ...state.accounts ],
                 transactions: [ ...state.transactions ]
-            }
+            };
 
             const deleteIndex = deleteState.accounts.findIndex(char => {
                 return char._id === action.payload;
@@ -71,7 +71,7 @@ const dataReducer = (state = DEFAULT_STATE, action) => {
             let transactionState = {
                 accounts: [ ...state.accounts ],
                 transactions: [ ...state.transactions ]
-            }
+            };
 
             const transactionIndex = transactionState.accounts.findIndex(char => {
                 return char._id === action.payload.accountId;
@@ -81,7 +81,7 @@ const dataReducer = (state = DEFAULT_STATE, action) => {
                 _id: action.payload.accountId,
                 name: action.payload.accountName,
                 balance: action.payload.balance
-            }
+            };
 
             transactionState.transactions.push({
                 _id: transactionState.transactions.length,
@@ -97,6 +97,6 @@ const dataReducer = (state = DEFAULT_STATE, action) => {
         default:
             return state;
     }
-}
+};
 
 export default dataReducer;
